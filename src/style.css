@@ -1,0 +1,44 @@
+body {
+  font-family: "PT Mono", monospace;
+}
+
+.container {
+  display: block;
+  margin: 50px auto;
+  max-width: 60%;
+}
+
+.cityForm {
+  margin-bottom: 20px;
+}
+
+.city {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.dayAndTime {
+  color: gray;
+  font-size: 20px;
+}
+
+.weatherIcons {
+  font-size: 80px;
+  margin: 20px;
+}
+
+.temperature {
+  font-size: 60px;
+}
+
+.unit {
+  position: relative;
+  font-size: 20px;
+  top: -30px;
+}
+
+.humidityWindSpeed {
+  position: relative;
+  font-size: 20px;
+  top: 35px;
+}
