@@ -33,8 +33,12 @@ let weekDays = [
 
 function showTemperature(response) {
   let temperature = document.querySelector("#temperature");
+  let humidity = document.querySelector("#humidity");
+  let windSpeed = document.querySelector("#wind-speed");
   console.log(response);
   temperature.innerHTML = Math.round(response.data.temperature.current);
+  humidity.innerHTML = Math.round(response.data.temperature.humidity);
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function callApi(city) {
@@ -74,7 +78,7 @@ if (minutes < 10) {
   time.innerHTML = `${hour}:${minutes}`;
 }
 
-// Search City - Enter Temperature
+// Search City - Enter Temperature, Humidity, WindSpeed
 
 let cityInput = document.querySelector("#form");
 cityInput.addEventListener("submit", enterCity);
