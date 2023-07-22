@@ -25,6 +25,15 @@ let weekDays = [
   "Saturday",
 ];
 
+// City Input Function
+
+function enterCity(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  let cityChanged = document.querySelector("#city");
+  cityChanged.innerHTML = `${cityInput.value}`;
+}
+
 // Time Date Script
 
 let now = new Date();
@@ -46,3 +55,8 @@ if (minutes < 10) {
 } else {
   time.innerHTML = `${hour}:${minutes}`;
 }
+
+// Search City
+
+let cityInput = document.querySelector("#form");
+cityInput.addEventListener("submit", enterCity);
