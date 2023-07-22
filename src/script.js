@@ -29,7 +29,7 @@ let weekDays = [
   "Saturday",
 ];
 
-// City Input Function
+// City Input Function - Adjusting Entries for Temperature, Humidity, WindSpeed, Weather Condition, Icon
 
 function showTemperature(response) {
   let temperature = document.querySelector("#temperature");
@@ -82,7 +82,7 @@ if (minutes < 10) {
   time.innerHTML = `${hour}:${minutes}`;
 }
 
-// Search City - Enter Temperature, Humidity, WindSpeed
+// Search City - Enter Temperature, Humidity, WindSpeed, Weather Condition, Icon
 
 let cityInput = document.querySelector("#form");
 cityInput.addEventListener("submit", enterCity);
