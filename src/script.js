@@ -35,10 +35,14 @@ function showTemperature(response) {
   let temperature = document.querySelector("#temperature");
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind-speed");
-  console.log(response);
+  let iconElement = document.querySelector("#icon");
+  let weatherCondition = document.querySelector("#weather-condition");
+
   temperature.innerHTML = Math.round(response.data.temperature.current);
   humidity.innerHTML = Math.round(response.data.temperature.humidity);
   windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
+  weatherCondition.innerHTML = response.data.condition.description;
 }
 
 function callApi(city) {
