@@ -1,3 +1,7 @@
+// API Key
+
+let apiKey = "f6314bt59a4db7709bf2fa9bob1f9379";
+
 // Time Date Definitions
 
 let months = [
@@ -27,11 +31,25 @@ let weekDays = [
 
 // City Input Function
 
+function showTemperature(response) {
+  let temperature = document.querySelector("#temperature");
+  console.log(response);
+  temperature.innerHTML = Math.round(response.data.temperature.current);
+}
+
+function callApi(city) {
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(url).then(showTemperature);
+}
+
 function enterCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
   let cityChanged = document.querySelector("#city");
-  cityChanged.innerHTML = `${cityInput.value}`;
+  cityInput = `${cityInput.value}`;
+  cityChanged.innerHTML = `${cityInput}`;
+
+  callApi(cityInput);
 }
 
 // Time Date Script
@@ -56,7 +74,7 @@ if (minutes < 10) {
   time.innerHTML = `${hour}:${minutes}`;
 }
 
-// Search City
+// Search City - Enter Temperature
 
 let cityInput = document.querySelector("#form");
 cityInput.addEventListener("submit", enterCity);
