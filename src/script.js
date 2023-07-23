@@ -39,7 +39,6 @@ function showTemperature(response) {
   let weatherCondition = document.querySelector("#weather-condition");
 
   celciusTemperature = response.data.temperature.current;
-  console.log(response);
 
   temperature.innerHTML = Math.round(response.data.temperature.current);
   humidity.innerHTML = Math.round(response.data.temperature.humidity);
@@ -103,6 +102,34 @@ if (minutes < 10) {
 } else {
   time.innerHTML = `${hour}:${minutes}`;
 }
+
+function showCurrentPosition(response) {
+  let currentCity = document.querySelector("#city");
+  let currentTemperature = document.querySelector("#temperature");
+  let currentWeatherCondition = document.querySelector("#weather-condition");
+  let currentHumidity = document.querySelector("#humidity");
+  let currentWindSpeed = document.querySelector("#wind-speed");
+  let currentIconElement = document.querySelector("#icon");
+
+  currentCity.innerHTML = response.data.city;
+  currentTemperature.innerHTML = Math.round(response.data.temperature.current);
+  currentWeatherCondition.innerHTML = response.data.condition.description;
+  currentHumidity.innerHTML = response.data.temperature.humidity;
+  currentWindSpeed.innerHTML = Math.round(response.data.wind.speed * 3.6);
+  currentIconElement.setAttribute("src", `${response.data.condition.icon_url}`);
+}
+
+function getLatLon(position) {
+  let lat = `${position.coords.latitude}`;
+  let lon = `${position.coords.longitude}`;
+
+  let urlLatLon = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+  axios.get(urlLatLon).then(showCurrentPosition);
+}
+
+// Default place and weather conditions
+
+navigator.geolocation.getCurrentPosition(getLatLon);
 
 // Search City - Enter Temperature, Humidity, WindSpeed, Weather Condition, Icon
 
