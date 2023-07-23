@@ -53,6 +53,7 @@ a {
 
 .date {
   color: #607d8b;
+  margin-bottom: 10px;
 }
 
 .temperatureOutput .active {

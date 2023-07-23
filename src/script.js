@@ -103,6 +103,8 @@ if (minutes < 10) {
   time.innerHTML = `${hour}:${minutes}`;
 }
 
+// Function Current Position
+
 function showCurrentPosition(response) {
   let currentCity = document.querySelector("#city");
   let currentTemperature = document.querySelector("#temperature");
@@ -110,6 +112,8 @@ function showCurrentPosition(response) {
   let currentHumidity = document.querySelector("#humidity");
   let currentWindSpeed = document.querySelector("#wind-speed");
   let currentIconElement = document.querySelector("#icon");
+
+  celciusTemperature = response.data.temperature.current;
 
   currentCity.innerHTML = response.data.city;
   currentTemperature.innerHTML = Math.round(response.data.temperature.current);
