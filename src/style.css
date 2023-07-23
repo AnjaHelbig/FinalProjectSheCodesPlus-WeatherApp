@@ -40,6 +40,10 @@ body {
   top: -5px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .humidityWindSpeed {
   position: relative;
   font-size: 20px;
@@ -49,4 +53,9 @@ body {
 
 .date {
   color: #607d8b;
+}
+
+.temperatureOutput .active {
+  color: #607d8b;
+  cursor: default;
 }
