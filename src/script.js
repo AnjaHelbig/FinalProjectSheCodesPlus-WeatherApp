@@ -38,9 +38,12 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#icon");
   let weatherCondition = document.querySelector("#weather-condition");
 
+  celciusTemperature = response.data.temperature.current;
+  console.log(response);
+
   temperature.innerHTML = Math.round(response.data.temperature.current);
   humidity.innerHTML = Math.round(response.data.temperature.humidity);
-  windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  windSpeed.innerHTML = Math.round(response.data.wind.speed * 3.6);
   iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
   weatherCondition.innerHTML = response.data.condition.description;
 }
@@ -58,6 +61,21 @@ function enterCity(event) {
   cityChanged.innerHTML = `${cityInput}`;
 
   callApi(cityInput);
+}
+
+// Functions - Temperature Conversion
+
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function convertToCelcius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
 }
 
 // Time Date Script
@@ -84,5 +102,15 @@ if (minutes < 10) {
 
 // Search City - Enter Temperature, Humidity, WindSpeed, Weather Condition, Icon
 
+let celciusTemperature = null;
+
 let cityInput = document.querySelector("#form");
 cityInput.addEventListener("submit", enterCity);
+
+// Temperature conversion (Celcius / Fahrenheit)
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", convertToCelcius);

@@ -6,9 +6,6 @@ body {
   display: block;
   margin: 50px auto;
   max-width: 60%;
-  background-color: #0b5ed7;
-  padding: 20px;
-  border-radius: 5%;
 }
 
 .cityForm {
@@ -21,7 +18,7 @@ body {
 }
 
 .dayAndTime {
-  color: gray;
+  color: #607d8b;
   font-size: 20px;
 }
 
@@ -47,4 +44,9 @@ body {
   position: relative;
   font-size: 20px;
   top: 10px;
+  color: #607d8b;
+}
+
+.date {
+  color: #607d8b;
 }
