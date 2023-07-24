@@ -182,6 +182,8 @@ function showCurrentPosition(response) {
   currentHumidity.innerHTML = response.data.temperature.humidity;
   currentWindSpeed.innerHTML = Math.round(response.data.wind.speed * 3.6);
   currentIconElement.setAttribute("src", `${response.data.condition.icon_url}`);
+
+  getForecast(response.data.coordinates);
 }
 
 function getLatLon(position) {
