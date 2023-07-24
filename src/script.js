@@ -63,7 +63,7 @@ function displayForecast(response) {
                     forecastDay.condition.icon
                   }.png"
                   alt=""
-                  width="50"
+                  width="100"
                 />
                 <div class="weatherForecastTemperatures">
                   <span class="weatherForecastTempMax">${Math.round(
@@ -102,7 +102,11 @@ function showTemperature(response) {
   temperature.innerHTML = Math.round(response.data.temperature.current);
   humidity.innerHTML = Math.round(response.data.temperature.humidity);
   windSpeed.innerHTML = Math.round(response.data.wind.speed * 3.6);
-  iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
+  iconElement.setAttribute(
+    "src",
+    `${response.data.condition.icon_url}`,
+    (width = 100)
+  );
   weatherCondition.innerHTML = response.data.condition.description;
 
   getForecast(response.data.coordinates);
