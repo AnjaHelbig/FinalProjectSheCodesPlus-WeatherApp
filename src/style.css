@@ -20,6 +20,7 @@ body {
 .dayAndTime {
   color: #607d8b;
   font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .icon {
@@ -62,6 +63,12 @@ a {
 }
 
 .forecast {
-  margin-top: 30px;
+  margin-top: 70px;
   text-align: center;
+  color: #607d8b;
+  font-size: 20px;
+}
+
+.weatherForecastTempMin {
+  opacity: 0.5;
 }

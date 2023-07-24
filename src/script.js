@@ -29,6 +29,65 @@ let weekDays = [
   "Saturday",
 ];
 
+// weather forecast functions
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  console.log(response);
+
+  let forecast = response.data.daily;
+  console.log(forecast);
+
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 7 && index > 0) {
+      forecastHTML =
+        forecastHTML +
+        `
+    <div class="col-2">
+                <div class="weatherForecastDate">${formatDay(
+                  forecastDay.time
+                )}</div>
+                <img
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                    forecastDay.condition.icon
+                  }.png"
+                  alt=""
+                  width="50"
+                />
+                <div class="weatherForecastTemperatures">
+                  <span class="weatherForecastTempMax">${Math.round(
+                    forecastDay.temperature.maximum
+                  )}°</span>
+                  <span class="weatherForecastTempMin">${Math.round(
+                    forecastDay.temperature.minimum
+                  )}°</span>
+                </div>
+              </div>
+              `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
+function getForecast(coordinates) {
+  let urlForecast = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}`;
+  axios.get(urlForecast).then(displayForecast);
+}
+
 // City Input Function - Adjusting Entries for Temperature, Humidity, WindSpeed, Weather Condition, Icon
 
 function showTemperature(response) {
@@ -45,6 +104,8 @@ function showTemperature(response) {
   windSpeed.innerHTML = Math.round(response.data.wind.speed * 3.6);
   iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
   weatherCondition.innerHTML = response.data.condition.description;
+
+  getForecast(response.data.coordinates);
 }
 
 function callApi(city) {
@@ -131,39 +192,6 @@ function getLatLon(position) {
   axios.get(urlLatLon).then(showCurrentPosition);
 }
 
-// weather forecast functions
-
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
-
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  let forecastHTML = `<div class="row">`;
-
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-    <div class="col-2">
-                <div class="weatherForecastDate">${day}</div>
-                <img
-                  src="https://simpleicon.com/wp-content/uploads/sun.svg"
-                  alt=""
-                  width="50"
-                />
-                <div class="weatherForecastTemperatures">
-                  <span class="weatherForecastTempMax">20°</span>
-                  <span class="weatherForecastTempMin">10°</span>
-                </div>
-              </div>
-              `;
-  });
-
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
-}
-
 // Default place and weather conditions
 
 navigator.geolocation.getCurrentPosition(getLatLon);
@@ -182,5 +210,3 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", convertToCelcius);
-
-displayForecast();
