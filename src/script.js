@@ -131,6 +131,39 @@ function getLatLon(position) {
   axios.get(urlLatLon).then(showCurrentPosition);
 }
 
+// weather forecast functions
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  let forecastHTML = `<div class="row">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+                <div class="weatherForecastDate">${day}</div>
+                <img
+                  src="https://simpleicon.com/wp-content/uploads/sun.svg"
+                  alt=""
+                  width="50"
+                />
+                <div class="weatherForecastTemperatures">
+                  <span class="weatherForecastTempMax">20°</span>
+                  <span class="weatherForecastTempMin">10°</span>
+                </div>
+              </div>
+              `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 // Default place and weather conditions
 
 navigator.geolocation.getCurrentPosition(getLatLon);
@@ -149,3 +182,5 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", convertToCelcius);
+
+displayForecast();
