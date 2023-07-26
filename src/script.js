@@ -113,6 +113,8 @@ function showTemperature(response) {
 }
 
 function callApi(city) {
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(url).then(showTemperature);
 }
