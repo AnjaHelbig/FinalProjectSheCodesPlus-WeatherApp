@@ -55,26 +55,24 @@ function displayForecast(response) {
         forecastHTML +
         `
     <div class="col-sm-2">
-                <div class="weatherForecastDate">${formatDay(
-                  forecastDay.time
-                )}</div>
-                <img
-                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-                    forecastDay.condition.icon
-                  }.png"
-                  alt=""
-                  width="80"
-                />
-                <div class="weatherForecastTemperatures">
-                  <span class="weatherForecastTempMax">${Math.round(
-                    forecastDay.temperature.maximum
-                  )}°</span>
-                  <span class="weatherForecastTempMin">${Math.round(
-                    forecastDay.temperature.minimum
-                  )}°</span>
-                </div>
-              </div>
-              `;
+      <div class="weatherForecastDate">${formatDay(forecastDay.time)}</div>
+        <img
+        src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+          forecastDay.condition.icon
+        }.png"
+          alt=""
+          width="80"
+        />
+        <div class="weatherForecastTemperatures">
+        <span class="weatherForecastTempMax">${Math.round(
+          forecastDay.temperature.maximum
+        )}°</span>
+        <span class="weatherForecastTempMin">${Math.round(
+          forecastDay.temperature.minimum
+        )}°</span>
+      </div>
+    </div>
+    `;
     }
   });
 
