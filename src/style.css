@@ -1,15 +1,26 @@
 body {
   font-family: "PT Mono", monospace;
+  background: linear-gradient(
+    to top,
+    rgb(9, 32, 63) 0%,
+    rgb(83, 120, 149) 100%
+  );
 }
 
 .container {
   display: block;
   margin: 50px auto;
-  max-width: 60%;
+  max-width: 70%;
 }
 
 .cityForm {
   margin-bottom: 20px;
+}
+
+.btn-button {
+  color: white;
+  background-color: #607895;
+  border: solid;
 }
 
 .city {
@@ -67,10 +78,24 @@ a {
   text-align: center;
   color: #607d8b;
   font-size: 20px;
+  margin-bottom: 30px;
 }
 
 .weatherForecastTempMin {
   opacity: 0.5;
+}
+
+footer {
+  color: white;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.gitHubLink {
+  color: white;
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {
