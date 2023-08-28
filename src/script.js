@@ -54,7 +54,7 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-    <div class="col-sm-2">
+    <div class="col-sm-2 weatherForecastElement">
       <div class="weatherForecastDate">${formatDay(forecastDay.time)}</div>
         <img
         src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${

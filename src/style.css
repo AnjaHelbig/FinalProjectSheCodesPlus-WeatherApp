@@ -10,7 +10,7 @@ body {
 .container {
   display: block;
   margin: 50px auto;
-  max-width: 70%;
+  max-width: 50%;
 }
 
 .cityForm {
@@ -79,6 +79,8 @@ a {
   color: #607d8b;
   font-size: 20px;
   margin-bottom: 30px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .weatherForecastTempMin {
@@ -102,5 +104,15 @@ footer {
   .container {
     max-width: 100%;
     margin: 10px auto;
+  }
+  .weatherForecastElement {
+    padding: 10px;
+    border: solid;
+    border-radius: 10px;
+    display: block;
+    margin: 5px auto;
+  }
+  .temperatureOutput {
+    text-align: center;
   }
 }
